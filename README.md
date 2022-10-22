@@ -18,6 +18,7 @@ O que veremos na aula de hoje?
 * [PUT , PATCH , DELETE](https://github.com/reprograma/on19-tet-s9-api-III)
 * [POST, GET](https://github.com/reprograma/on19-tet-s8-api-II)
 * [Design M.V.C](https://irias.com.br/blog/mvc-conceito-e-exemplo-em-node-js/)
+* [Spread Syntax](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
 
 
 <p align="center">
