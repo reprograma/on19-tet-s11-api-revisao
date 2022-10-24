@@ -11,9 +11,9 @@ const create = (req, res) => {
 }
 
 
-const show  = () => {};
-const index  = (req, res) => {
-    
+const show = () => { };
+const index = (req, res) => {
+
     const filtrarNome = req.query.nome
     const filtrarSaldo = parseFloat(req.query.saldo)
 
@@ -23,7 +23,7 @@ const index  = (req, res) => {
             return item.nome_cliente.toLowerCase() === filtrarNome.toLowerCase()
         }
         if (filtrarSaldo) {
-            return item.conta.saldo  === filtrarSaldo
+            return item.conta.saldo === filtrarSaldo
         }
         return item
     })
@@ -49,12 +49,12 @@ const update = (req, res) => {
     return res.status(404).json({
         message: "Cliente não foi encontrado em nosso sistema, tente novamente."
     })
-    
+
 };
 
 
 const destroy = () => {
-    
+
 
 
 
@@ -63,13 +63,13 @@ const destroy = () => {
 };
 
 
-module.exports ={
+module.exports = {
 
-    create, 
+    create,
     show,
     index,
-    update, 
+    update,
     destroy,
 
-    
+
 }

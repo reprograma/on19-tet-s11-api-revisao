@@ -1,10 +1,10 @@
 const listaClientes = require('../model/contas-clientes.json')
 
 
-const create = () => {};
-const show  = () => {};
-const index  = () => {};
-const update = () => {};
+const create = () => { };
+const show = () => { };
+const index = () => { };
+const update = () => { };
 const destroy = (req, res) => {
 
     const Idclientes = req.params.id
@@ -24,13 +24,13 @@ const destroy = (req, res) => {
 };
 
 
-module.exports ={
+module.exports = {
 
-    create, 
+    create,
     show,
     index,
-    update, 
+    update,
     destroy,
 
-    
+
 }
