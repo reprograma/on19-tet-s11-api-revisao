@@ -1,0 +1,11 @@
+{
+  "name": "exercicio-para-casa",
+  "version": "1.0.0",
+  "description": "Refatoração do código da API de banco feito na semana passada, agora no padrão MVC ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mariana Cristina Dias dos Santos",
+  "license": "ISC"
+}
