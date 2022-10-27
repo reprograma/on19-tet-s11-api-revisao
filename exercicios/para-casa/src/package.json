@@ -1,0 +1,19 @@
+{
+  "name": "projeto-semana-10",
+  "version": "1.0.0",
+  "description": "Aplicando conceitos de Push, Patch, Post e Delete em API de Banco",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Cibelle Sena",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "moment": "^2.29.4",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
