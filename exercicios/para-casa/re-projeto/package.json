@@ -1,0 +1,19 @@
+{
+  "name": "re-projeto",
+  "version": "1.0.0",
+  "description": "Reestruturação do projeto guiado da semana 10",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Laura",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "moment": "^2.29.4",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
