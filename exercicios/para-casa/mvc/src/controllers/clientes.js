@@ -1,4 +1,4 @@
-// [IN PROGRESS] - Criar os clientes do banco
+// Criar os clientes do banco
 
 const contasClientes = require("../model/contas-clientes.json");
 const uuid = require("uuid-random");
@@ -36,7 +36,7 @@ const criarConta = (req, res) => {
     });
   };
   
-  // [IN PROGRESS] - Atualizar informações desses clientes ( como endereço, telefone de contato...)
+  // Atualizar informações desses clientes ( como endereço, telefone de contato...)
 
   
   const atualizarCliente = (req, res) => {
@@ -67,7 +67,7 @@ const criarConta = (req, res) => {
   };
   
 
-// [IN PROGRESS]  Encerrar contas de clientes
+// Encerrar contas de clientes
 
   
   const deletarCliente = (req, res) => {
@@ -90,12 +90,11 @@ const criarConta = (req, res) => {
     });
   };
 
-  // [IN PROGRESS]  Conseguir Filtrar os clientes do banco pelo seu nome,por saldo...
+  // Conseguir Filtrar os clientes do banco pelo seu nome,por saldo...
 
-
-
-const mostrarClientes = (req, res) => {
-    const filtroNome = req.query.nome;
+   
+    const mostrarClientes = (req, res) => {
+    const filtroNome = req.query.nome?.toLowerCase();
     const filtroCpf = req.query.cpf;
     const filtroNumeroDaConta = req.query.conta;
     const filtroTipoDaConta = req.query.tipodaconta;
@@ -106,7 +105,7 @@ const mostrarClientes = (req, res) => {
   
     const contaFiltrada = contasClientes.filter((conta) => {
       if (filtroNome) {
-        return conta.nome_cliente.toLowerCase() == filtroNome.toLowerCase();
+        return conta.nome_cliente.toLowerCase().includes(filtroNome);
       }
       if (filtroCpf) {
         return conta.cpf_cliente == filtroCpf;
@@ -133,6 +132,7 @@ const mostrarClientes = (req, res) => {
     });
     res.json(contaFiltrada);
   };
+ 
 
   module.exports = {
     criarConta,

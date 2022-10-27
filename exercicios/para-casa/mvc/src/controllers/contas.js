@@ -1,12 +1,10 @@
 // - [IN PROGRESS] Fazer depósitos / pagamentos usando o saldo de sua conta
 
 const contasClientes = require("../model/contas-clientes.json");
-const saldo = 0
-
 
 const deposito = (req, res) => {
   const idClienteContaCreditada = req.query.id;
-  const valorDeposito = 1000;
+  const deposito = 1000;
   const saldo = req.body;
 
   const existeConta = contasClientes.find(
@@ -15,7 +13,7 @@ const deposito = (req, res) => {
   if (existeConta) {
     const clienteSaldoAtualizado = {
       ...existeConta.conta,
-      saldo: saldo.conta.saldo + valorDeposito,
+      saldo: saldo.conta.saldo + deposito,
     };
     contasClientes.map((cliente, index) => {
       if (contasClientes.id == idClienteContaCreditada) {
@@ -30,37 +28,39 @@ const deposito = (req, res) => {
   }
   return;
   res.status(404).json({ message: "Cliente não identificado" });
-};
+}
+
 
 //[IN PROGRESS]
 
  const pagamento = (req, res) => {
-  const cpfClienteContaRealizaPagamento = req.query.cpf_cliente;
-  const valorPagamento = 3000;
-  const saldo = req.body;
+  const idClienteContaRealizaPagamento = req.params.id;
+  const { valorPagamento } = req.body;
+  
 
   const existeConta = contasClientes.find(
-    (conta) => contasClientes.cpf_cliente == cpfClienteContaRealizaPagamento
+    (conta) => contasClientes.id == idClienteContaRealizaPagamento
   );
   if (existeConta.conta.saldo >= valorPagamento) {
     const pagamentoRealizado = {
       ...existeConta.conta,
-      saldo: saldo.conta.saldo - valorPagamento,
+      saldo: existeConta.conta.saldo - valorPagamento,
     };
     contasClientes.map((cliente, index) => {
-      if (contasClientes.cpf_cliente == cpfClienteContaRealizaPagamento) {
+      if (contasClientes.id == idClienteContaRealizaPagamento) {
         contasClientes.push({
           ...pagamentoRealizado,
         });
+        
       }
     });
-
+    
     return res.status(200).json({ 
-      message: `Pagamento realizado com sucesso. Saldo R$ ${pagamentoRealizado.saldo.toFixed(2)}`, })
+      message: `Pagamento realizado com sucesso. Novo saldo R$ ${pagamentoRealizado.saldo.toFixed(2)}`, })
   
   }
   return;
-  res.status(404).json({ message: "Saldo Insuficiente" });
+  res.status(400).json({ message: "Saldo Insuficiente" });
 };
 
 module.exports = {
