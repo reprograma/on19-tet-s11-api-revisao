@@ -1,0 +1,19 @@
+{
+  "name": "refatorando-bankreprograma-para-mvc",
+  "version": "1.0.0",
+  "description": "Passando o projeto Guiado 2 para o modelo mvc",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "Liliane Gomes",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "uuid-random": "^1.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
