@@ -1,5 +1,5 @@
 const listaClientes = require('../models/contas-clientes.json');
-const create = () => {}
+const create = (req, res) => {}
 const read = (req, res) => {
 const FiltroNome = req.query.nome_cliente
 const filtroCpf= req.query.cpf_cliente
