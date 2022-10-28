@@ -1,4 +1,4 @@
-// - [IN PROGRESS] Fazer depósitos / pagamentos usando o saldo de sua conta
+// - [DONE] Fazer depósitos / pagamentos usando o saldo de sua conta
 
 const contasClientes = require("../model/contas-clientes.json");
 
@@ -34,23 +34,24 @@ const deposito = (req, res) => {
 }
 
 
-//[IN PROGRESS]
+//[DONE]
 
  const pagamento = (req, res) => {
-  const idClienteContaRealizaPagamento = req.params.id;
-  const { valorPagamento } = req.body;
+  const idCliente = req.params.id;
+  const valorPagamento = 8000;
+  const {saldo} = req.body
   
 
   const existeConta = contasClientes.find(
-    (conta) => contasClientes.id == idClienteContaRealizaPagamento
+    (conta) => conta.id == idCliente
   );
   if (existeConta.conta.saldo >= valorPagamento) {
     const pagamentoRealizado = {
       ...existeConta.conta,
-      saldo: existeConta.conta.saldo - valorPagamento,
+      saldo: saldo - valorPagamento,
     };
     contasClientes.map((cliente, index) => {
-      if (contasClientes.id == idClienteContaRealizaPagamento) {
+      if (contasClientes.id == idCliente) {
         contasClientes.push({
           ...pagamentoRealizado,
         });
