@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "express": "^4.18.2",
+    "gitignore": "^0.7.0",
+    "moment": "^2.29.4",
+    "node": "^19.0.0",
+    "uuid": "^9.0.0"
+  },
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "name": "src",
+  "version": "1.0.0",
+  "main": "routes.js",
+  "author": "Roberta Souza",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
