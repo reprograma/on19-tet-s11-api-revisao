@@ -1,7 +1,6 @@
 const listaDeClientes = require('../model/contas-clientes.json')
 
 
-
 // - Fazer depósitos / pagamentos usando o saldo de sua conta - DONE
 const depositoCliente = (req, res) => {
   const IDCliente = req.params.id;
@@ -48,11 +47,6 @@ const pagamentoCliente = (req, res) => {
   return res.status(404).json({ message: `Cliente não encontrado.` });
 };
 
-// const create = () => {}
-// const show = () => {}
-// const index = () => {}
-// const update = () => {}
-// const destroy = () => {}
 
 module.exports = {
   depositoCliente,

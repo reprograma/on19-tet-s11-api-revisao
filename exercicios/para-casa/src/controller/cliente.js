@@ -1,6 +1,5 @@
-const listaDeClientes = require('../model/contas-clientes.json')
+const listaDeClientes = require('../model/contas-clientes')
 const { v4: uuidv4 } = require("uuid");
-
 
 
 
@@ -80,10 +79,10 @@ const listarTodos = (req, res) => {
 
 //- Conseguir Filtrar os clientes do banco pelo seu nome, por saldo. DONE
 const filtrarClientes = (req, res) => {
-  const filtroSaldo = req.query;
+  const filtroNome = req.query.nome_cliente;
   const filtroCpf = req.query.cpf_cliente;
   const filtroEmail = req.query.email;
-  const filtroNome = req.query.nome_cliente;
+  const filtroSaldo = req.query;
 
   const cliente = listaDeClientes.filter((item) => {
     if (filtroNome) {
