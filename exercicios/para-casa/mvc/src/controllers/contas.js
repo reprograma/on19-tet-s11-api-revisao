@@ -3,9 +3,8 @@
 const contasClientes = require("../model/contas-clientes.json");
 
 const deposito = (req, res) => {
-  const idClienteContaCreditada = req.query.id;
-  const deposito = 1000;
-  const saldo = req.body;
+  const idClienteContaCreditada = req.params.id;
+  const { deposito } = req.body;
 
   const existeConta = contasClientes.find(
     (conta) => contasClientes.id == idClienteContaCreditada
@@ -13,7 +12,7 @@ const deposito = (req, res) => {
   if (existeConta) {
     const clienteSaldoAtualizado = {
       ...existeConta.conta,
-      saldo: saldo.conta.saldo + deposito,
+      saldo: existeConta.conta.saldo + deposito,
     };
     contasClientes.map((cliente, index) => {
       if (contasClientes.id == idClienteContaCreditada) {

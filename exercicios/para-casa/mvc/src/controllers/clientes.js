@@ -53,7 +53,7 @@ const criarConta = (req, res) => {
         endereco_cliente,
       };
       contasClientes.map((cliente, index) => {
-        if (cliente.id == cpfClidiente) {
+        if (cliente.id == idCliente) {
           contasClientes[index] = clienteAtualizado
           return (contasClientes[index] = clienteAtualizado);
          
