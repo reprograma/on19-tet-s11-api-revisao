@@ -3,30 +3,34 @@
 const contasClientes = require("../model/contas-clientes.json");
 
 const deposito = (req, res) => {
-  const idClienteContaCreditada = req.params.id;
-  const { deposito } = req.body;
+  const idCliente = req.params.id;
+  const deposito = 1000000;
+  const {saldo} = req.body
+  
 
   const existeConta = contasClientes.find(
-    (conta) => contasClientes.id == idClienteContaCreditada
+    (conta) => conta.id == idCliente
   );
   if (existeConta) {
     const clienteSaldoAtualizado = {
       ...existeConta.conta,
-      saldo: existeConta.conta.saldo + deposito,
+      saldo: saldo + deposito,
     };
     contasClientes.map((cliente, index) => {
-      if (contasClientes.id == idClienteContaCreditada) {
+      if (contasClientes.id == idCliente) {
         contasClientes.push({
           ...clienteSaldoAtualizado,
           
         });
+        
       }
     });
+    
 
     return res.status(200).json({ clienteSaldoAtualizado });
   }
-  return;
-  res.status(404).json({ message: "Cliente não identificado" });
+
+  return res.status(404).json({ message: "Cliente não identificado" });
 }
 
 
@@ -58,8 +62,7 @@ const deposito = (req, res) => {
       message: `Pagamento realizado com sucesso. Novo saldo R$ ${pagamentoRealizado.saldo.toFixed(2)}`, })
   
   }
-  return;
-  res.status(400).json({ message: "Saldo Insuficiente" });
+  return res.status(400).json({ message: "Saldo Insuficiente" });
 };
 
 module.exports = {
