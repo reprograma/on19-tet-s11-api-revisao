@@ -1,61 +1,77 @@
-const moment = require("moment");
 const clientsBankAccount = require("../model/modified-structure-clients-bank-account.json");
 
 const updateAccountType = (req, res) => {
-  const clientID = req.params.id
-  let newAccount = req.body
-  const userIndex = clientsBankAccount.findIndex(user => user.id === clientID)
+  const clientID = req.params.id;
+  const { conta: { tipo: { tipo_conta } } } = req.body;
+
+  if (tipo_conta != "corrente" && tipo_conta != "poupança" && tipo_conta != "investimento") {
+    return res.status(400).res.json({ message: "Account type is not defined" });
+  };
+  const userIndex = clientsBankAccount.findIndex(user => user.id === clientID);
 
   if (userIndex) {
-    const clientFind = clientsBankAccount[userIndex]
+    const findClient = clientsBankAccount[userIndex];
+    const updateAccount = {
+      ...findClient,
+      conta: {
+        numero: findClient.conta.numero,
+        tipo: {
+          tipo_conta: tipo_conta,
+          transacao_entrada: findClient.conta.tipo.transacao_entrada,
+          transacao_saida: findClient.conta.tipo.transacao_saida
+        },
+        saldo: findClient.conta.saldo,
+        data_criacao: findClient.conta.data_criacao
+      }
+    };
 
-    const typeUpdate = {
-      ...clientFind,
-      ...newAccount
-    }
-
-    clientsBankAccount.splice(userIndex, 1, typeUpdate)
+    clientsBankAccount.splice(userIndex, 1, updateAccount);
 
     return res.status(200).json({
-      message: `Data has been updated`,
+      message: `Account type has been updated`,
+      updateAccount
     });
-  }
-
+  };
 };
 
 const updateBankBalance = (req, res) => {
-  const clientCpf = req.params.cpf;
-  let { bankAccount } = req.body
-  bankAccount = req.body
+  const clientID = req.params.id;
+  let { conta: { tipo: { transacao_entrada, transacao_saida } } } = req.body;
 
-  let index = clientsBankAccount.findIndex(client => client.cpf_cliente == clientCpf)
+  let index = clientsBankAccount.findIndex(client => client.id == clientID);
 
   if (index == -1) {
     return res.status(404).json({ message: "Account not exist" });
-  }
+  };
 
-  let updateBankAccount = {
+  const updateBankAccount = {
     ...clientsBankAccount[index],
-    ...bankAccount
-  }
-
-  clientsBankAccount.splice(index, 1, updateBankAccount)
-
-  function updateBankBalance(saldo) {
-    if (bankAccount) {
-      let currentBankBalance = saldo;
-      let newIncomingBankBalance = currentBankBalance + clientsBankAccount[index].conta.tipo.transacao_entrada;
-      clientsBankAccount[index].conta.saldo = newIncomingBankBalance;
-
-      if (clientsBankAccount[index].conta.saldo >= clientsBankAccount[index].conta.tipo.transacao_saida) {
-        let newOutgoingBankBalance = clientsBankAccount[index].conta.saldo - clientsBankAccount[index].conta.tipo.transacao_saida
-        clientsBankAccount[index].conta.saldo = newOutgoingBankBalance
-      } else {
-        return res.status(400).json({ message: "Bad request. Please, check your bank balance" });
-      }
+    conta: {
+      numero: clientsBankAccount[index].conta.numero,
+      tipo: {
+        tipo_conta: clientsBankAccount[index].conta.tipo.tipo_conta,
+        transacao_entrada: transacao_entrada,
+        transacao_saida: transacao_saida
+      },
+      saldo: clientsBankAccount[index].conta.saldo,
+      data_criacao: clientsBankAccount[index].conta.data_criacao
     }
-  }
-  updateBankBalance(clientsBankAccount[index].conta.saldo);
+  };
+
+  clientsBankAccount.splice(index, 1, updateBankAccount);
+
+  if (transacao_entrada || transacao_saida) {
+    let currentBankBalance = clientsBankAccount[index].conta.saldo;
+    let newIncomingBankBalance = currentBankBalance + clientsBankAccount[index].conta.tipo.transacao_entrada;
+    clientsBankAccount[index].conta.saldo = newIncomingBankBalance;
+
+    if (clientsBankAccount[index].conta.saldo >= clientsBankAccount[index].conta.tipo.transacao_saida) {
+      let newOutgoingBankBalance = clientsBankAccount[index].conta.saldo - clientsBankAccount[index].conta.tipo.transacao_saida;
+      clientsBankAccount[index].conta.saldo = newOutgoingBankBalance;
+    } else {
+      return res.status(400).json({ message: "Bad request. Please, check your bank balance" });
+    };
+  };
 
   return res.status(200).json(clientsBankAccount[index]);
 };
