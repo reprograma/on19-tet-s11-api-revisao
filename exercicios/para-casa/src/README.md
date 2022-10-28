@@ -1,6 +1,5 @@
-<h1 align="center">
-  <img src="assets/reprograma-fundos-claros.png" alt="logo reprograma" width="500">
-</h1>
+![image](https://user-images.githubusercontent.com/101438321/185724780-b1859616-d415-44e6-b6c4-0262f33337c1.png)
+
 
 # PADRÃO MVC
 
