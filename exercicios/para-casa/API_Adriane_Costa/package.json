@@ -1,0 +1,18 @@
+{
+  
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  
+  "author": "Adriane Costa",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "moment": "^2.29.4",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
