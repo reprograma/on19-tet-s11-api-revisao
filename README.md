@@ -1,27 +1,18 @@
-<h1 align="center">
-  <img src="assets/reprograma-fundos-claros.png" alt="logo reprograma" width="500">
-</h1>
+# Exercício de Casa 🏠 
 
-# Tema da Aula
+## Nome do Exercicio
 
-Turma Online 19 - Todas em Tech  | Back-end | Semana 11 | 2022 | Professora Manuelly Suzik
+- Explicação do exercício: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam leo nibh, tempus sed rhoncus et, ultrices vitae orci.
+Donec erat mauris, laoreet in tortor vel, eleifend suscipit nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Aliquam leo nibh, tempus sed rhoncus et, ultrices vitae orci. Donec erat mauris, laoreet in tortor vel, eleifend suscipit nibh. 
+---
 
-### Instruções
-Antes de começar, vamos organizar nosso setup.
-* Fork esse repositório 
-* Clone o fork na sua máquina (Para isso basta abrir o seu terminal e digitar `git clone url-do-seu-repositorio-forkado`)
-* Entre na pasta do seu repositório (Para isso basta abrir o seu terminal e digitar `cd nome-do-seu-repositorio-forkado`)
-* [Add outras intrucoes caso necessario]
+Terminou o exercício? Dá uma olhada nessa checklist e confere se tá tudo certinho, combinado?!
 
-### Resumo API
-O que veremos na aula de hoje?
-* [PUT , PATCH , DELETE](https://github.com/reprograma/on19-tet-s9-api-III)
-* [POST, GET](https://github.com/reprograma/on19-tet-s8-api-II)
-* [Design M.V.C](https://irias.com.br/blog/mvc-conceito-e-exemplo-em-node-js/)
-* [Spread Syntax](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
-
-
-<p align="center">
-Desenvolvido com :purple_heart:  
-</p>
-
+- [ ] Fiz o fork do repositório.
+- [ ] Clonei o fork na minha máquina (`git clone url-do-meu-fork`).
+- [ ] Resolvi o exercício.
+- [ ] Adicionei as mudanças. (`git add .` para adicionar todos os arquivos, ou `git add nome_do_arquivo` para adicionar um arquivo específico)
+- [ ] Commitei a cada mudança significativa ou na finalização do exercício (`git commit -m "Mensagem do commit"`)
+- [ ] Pushei os commits na minha branch (`git push origin nome-da-branch`)
+- [ ] Criei um Pull Request seguindo as orientaçoes que estao nesse [documento](/exercicios/para-casa/instrucoes-pull-request.md).
